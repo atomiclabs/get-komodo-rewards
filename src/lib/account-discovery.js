@@ -1,23 +1,21 @@
-import getLedger from './get-ledger';
+import ledger from './ledger';
 import blockchain from './blockchain';
 import bitcoin from 'bitcoinjs-lib';
 
 const walkDerivationPath = async ({account, isChange}) => {
   const addresses = [];
-  // const gapLimit = 20; Should be 20 for prod, 1 for dev
+  // const gapLimit = 20; // Should be 20 for prod, 1 for dev
   const gapLimit = 1;
   let consecutiveUnusedAddresses = 0;
   let addressIndex = 0;
-
-  const ledger = await getLedger();
 
   // TODO: Don't request all pubkeys from Ledger, request xpub and derive keys on host
   // https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#serialization-format
   // https://github.com/LedgerHQ/ledgerjs/issues/114#issuecomment-372567048
   while (consecutiveUnusedAddresses < gapLimit) {
     const derivationPath = `44'/141'/${account}'/${isChange ? 1 : 0}/${addressIndex}`;
-    const pubKey = await ledger.getWalletPublicKey(derivationPath);
-    const address = await blockchain.getAddress(pubKey.bitcoinAddress);
+    const addressString = await ledger.getAddress(derivationPath);
+    const address = await blockchain.getAddress(addressString);
 
     addresses.push({address: address.addrStr, account, isChange, addressIndex, derivationPath});
 
@@ -29,8 +27,6 @@ const walkDerivationPath = async ({account, isChange}) => {
 
     addressIndex++;
   }
-
-  await ledger.close();
 
   return addresses.slice(0, addresses.length - gapLimit);
 };
