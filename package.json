@@ -5,5 +5,11 @@
   "main": "index.js",
   "repository": "https://github.com/atomiclabs/get-komodo-rewards",
   "author": "Luke Childs <lukechilds123@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "xo"
+  },
+  "devDependencies": {
+    "xo": "^0.24.0"
+  }
 }
