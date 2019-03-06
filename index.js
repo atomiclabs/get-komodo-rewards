@@ -8,36 +8,36 @@ const ONE_YEAR = 365 * 24 * 60;
 const DEVISOR = 10512000;
 
 const getKomodoRewards = ({tiptime, locktime, height, satoshis}) => {
-  // Calculate coinage
-  const coinage = Math.floor((tiptime - locktime) / ONE_HOUR);
+	// Calculate coinage
+	const coinage = Math.floor((tiptime - locktime) / ONE_HOUR);
 
-  // Return early if UTXO is not eligible for rewards
-  if (
-    (height >= KOMODO_ENDOFERA) ||
+	// Return early if UTXO is not eligible for rewards
+	if (
+		(height >= KOMODO_ENDOFERA) ||
     (locktime < LOCKTIME_THRESHOLD) ||
     (satoshis < MIN_SATOSHIS) ||
     (coinage < ONE_HOUR) ||
     (!height)
-  ) {
-    return 0;
-  }
+	) {
+		return 0;
+	}
 
-  // Cap reward periods
-  const limit = (height >= ONE_MONTH_CAP_HARDFORK) ? ONE_MONTH : ONE_YEAR;
-  let rewardPeriod = Math.min(coinage, limit);
+	// Cap reward periods
+	const limit = (height >= ONE_MONTH_CAP_HARDFORK) ? ONE_MONTH : ONE_YEAR;
+	let rewardPeriod = Math.min(coinage, limit);
 
-  // The first hour of coinage should not accrue rewards
-  rewardPeriod -= 59;
+	// The first hour of coinage should not accrue rewards
+	rewardPeriod -= 59;
 
-  // Calculate rewards
-  const rewards = Math.floor(satoshis / DEVISOR) * rewardPeriod;
+	// Calculate rewards
+	const rewards = Math.floor(satoshis / DEVISOR) * rewardPeriod;
 
-  // Ensure reward value is never negative
-  if (rewards < 0) {
-    throw new Error('Reward should never be negative');
-  }
+	// Ensure reward value is never negative
+	if (rewards < 0) {
+		throw new Error('Reward should never be negative');
+	}
 
-  return rewards;
+	return rewards;
 };
 
 module.exports = getKomodoRewards;
