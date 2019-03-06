@@ -40,4 +40,4 @@ const getKomodoRewards = ({tiptime, locktime, height, satoshis}) => {
   return rewards;
 };
 
-export default getKomodoRewards;
+module.exports = getKomodoRewards;
