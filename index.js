@@ -14,10 +14,10 @@ const getKomodoRewards = ({tiptime, locktime, height, satoshis}) => {
 	// Return early if UTXO is not eligible for rewards
 	if (
 		(height >= KOMODO_ENDOFERA) ||
-    (locktime < LOCKTIME_THRESHOLD) ||
-    (satoshis < MIN_SATOSHIS) ||
-    (coinage < ONE_HOUR) ||
-    (!height)
+		(locktime < LOCKTIME_THRESHOLD) ||
+		(satoshis < MIN_SATOSHIS) ||
+		(coinage < ONE_HOUR) ||
+		(!height)
 	) {
 		return 0;
 	}
