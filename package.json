@@ -7,9 +7,10 @@
   "author": "Luke Childs <lukechilds123@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "xo"
+    "test": "xo && ava"
   },
   "devDependencies": {
+    "ava": "^1.3.1",
     "xo": "^0.24.0"
   }
 }
