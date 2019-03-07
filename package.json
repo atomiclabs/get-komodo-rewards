@@ -7,10 +7,13 @@
   "author": "Luke Childs <lukechilds123@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && nyc ava",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "devDependencies": {
     "ava": "^1.3.1",
+    "codecov": "^3.2.0",
+    "nyc": "^13.3.0",
     "xo": "^0.24.0"
   }
 }
