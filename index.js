@@ -7,7 +7,17 @@ const ONE_MONTH = 31 * 24 * 60;
 const ONE_YEAR = 365 * 24 * 60;
 const DEVISOR = 10512000;
 
-const getKomodoRewards = ({tiptime, locktime, height, satoshis}) => {
+const getKomodoRewards = utxo => {
+	// Validate types
+	for (const [property, value] of Object.entries(utxo)) {
+		if (typeof value !== 'number') {
+			throw new TypeError(`\`${property}\` option must be a number.`);
+		}
+	}
+
+	// Destructure UTXO properties
+	const {tiptime, locktime, height, satoshis} = utxo;
+
 	// Calculate coinage
 	const coinage = Math.floor((tiptime - locktime) / ONE_HOUR);
 
