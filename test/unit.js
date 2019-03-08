@@ -32,3 +32,11 @@ test('getKomodoRewards() throws a TypeError if height property is not a number',
 	t.true(error instanceof TypeError);
 	t.is(error.message, '`height` option must be a number.');
 });
+
+test('getKomodoRewards() throws a TypeError if satoshis property is not a number', t => {
+	const error = t.throws(() => {
+		getKomodoRewards({tiptime: 1, locktime: 1, height: 1, satoshis: undefined});
+	});
+	t.true(error instanceof TypeError);
+	t.is(error.message, '`satoshis` option must be a number.');
+});
