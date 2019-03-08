@@ -16,3 +16,11 @@ test('getKomodoRewards() throws a TypeError if tiptime property is not a number'
 	t.true(error instanceof TypeError);
 	t.is(error.message, '`tiptime` option must be a number.');
 });
+
+test('getKomodoRewards() throws a TypeError if locktime property is not a number', t => {
+	const error = t.throws(() => {
+		getKomodoRewards({tiptime: 1, locktime: undefined, height: 1, satoshis: 1});
+	});
+	t.true(error instanceof TypeError);
+	t.is(error.message, '`locktime` option must be a number.');
+});
