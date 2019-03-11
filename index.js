@@ -9,11 +9,11 @@ const DEVISOR = 10512000;
 
 const getKomodoRewards = utxo => {
 	// Validate types
-	for (const [property, value] of Object.entries(utxo)) {
-		if (typeof value !== 'number') {
+	['tiptime', 'locktime', 'height', 'satoshis'].forEach(property => {
+		if (typeof utxo[property] !== 'number') {
 			throw new TypeError(`\`${property}\` option must be a number.`);
 		}
-	}
+	});
 
 	// Destructure UTXO properties
 	const {tiptime, locktime, height, satoshis} = utxo;
