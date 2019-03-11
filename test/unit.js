@@ -12,34 +12,16 @@ test('getKomodoRewards() returns a number', t => {
 	t.true(typeof getKomodoRewards(utxo) === 'number');
 });
 
-test('getKomodoRewards() throws a TypeError if tiptime property is not a number', t => {
+function typeErrorMacro(t, property) {
 	const error = t.throws(() => {
-		getKomodoRewards({...utxo, tiptime: undefined});
+		const input = {...utxo};
+		input[property] = undefined;
+		getKomodoRewards(input);
 	});
 	t.true(error instanceof TypeError);
-	t.is(error.message, '`tiptime` option must be a number.');
-});
+	t.is(error.message, `\`${property}\` option must be a number.`);
+}
 
-test('getKomodoRewards() throws a TypeError if locktime property is not a number', t => {
-	const error = t.throws(() => {
-		getKomodoRewards({...utxo, locktime: undefined});
-	});
-	t.true(error instanceof TypeError);
-	t.is(error.message, '`locktime` option must be a number.');
-});
+typeErrorMacro.title = (_, property) => `getKomodoRewards() throws a TypeError if ${property} property is not a number`;
 
-test('getKomodoRewards() throws a TypeError if height property is not a number', t => {
-	const error = t.throws(() => {
-		getKomodoRewards({...utxo, height: undefined});
-	});
-	t.true(error instanceof TypeError);
-	t.is(error.message, '`height` option must be a number.');
-});
-
-test('getKomodoRewards() throws a TypeError if satoshis property is not a number', t => {
-	const error = t.throws(() => {
-		getKomodoRewards({...utxo, satoshis: undefined});
-	});
-	t.true(error instanceof TypeError);
-	t.is(error.message, '`satoshis` option must be a number.');
-});
+['tiptime', 'locktime', 'height', 'satoshis'].forEach(property => test(typeErrorMacro, property));
