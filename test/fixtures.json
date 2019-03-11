@@ -1,0 +1,36 @@
+{
+  "utxos": [
+    {
+      "id": "8b12bb1082a454af0c6dfd1a79abc292ddf08124d29f407429795336110f2fbd:0",
+      "tiptime": 1552292091,
+      "locktime": 1552248193,
+      "height": 1263192,
+      "satoshis": 3206795322480,
+      "komododRewards": 205000320
+    },
+    {
+      "id": "a78a83dfef02d5e38baf6d8ea5a4ce1c3cbb494761604e52ac1348b9f33263c3:0",
+      "tiptime": 1552292091,
+      "locktime": 1552236670,
+      "height": 1263001,
+      "satoshis": 366901005351,
+      "komododRewards": 30156192
+    },
+    {
+      "id": "8cb6a93a9e7d94afdfa3c92421d5a6875034b48f37f39cf9d90ba2c7c9bdfc6a:0",
+      "tiptime": 1552292091,
+      "locktime": 1552197435,
+      "height": 1262354,
+      "satoshis": 4018343055858,
+      "komododRewards": 580273716
+    },
+    {
+      "id": "f009cdeec5ea87af6cec4c7e853a38c2baf5faee62e4475094806b894e1ffedd:0",
+      "tiptime": 1552292091,
+      "locktime": 1551480299,
+      "height": 1250487,
+      "satoshis": 50580046279,
+      "komododRewards": 64804170
+    }
+  ]
+}

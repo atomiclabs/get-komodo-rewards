@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+txid=$1;
+
+to_sats() {
+  echo "$1*100000000" | bc;
+}
+
+tiptime="$(komodo-cli getinfo | jq -r '.tiptime')";
+transaction="$(curl https://kmdexplorer.io/insight-api-komodo/tx/$txid)";
+locktime="$(echo $transaction | jq -r '.locktime')";
+height="$(echo $transaction | jq -r '.blockheight')";
+satoshis="$(to_sats $(echo $transaction | jq -r '.vout[0].value'))";
+komodod_rewards="$(to_sats $(komodo-cli gettxout $txid 0 | jq -r '.interest'))";
+
+utxo="{
+  \"id\": \"$txid:0\",
+  \"tiptime\": $tiptime,
+  \"locktime\": $locktime,
+  \"height\": $height,
+  \"satoshis\": $satoshis,
+  \"komododRewards\": $komodod_rewards
+}";
+
+echo $utxo | jq;
