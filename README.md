@@ -40,6 +40,42 @@ const rewards = getKomodoRewards(utxo);
 
 If you don't have access to this you can use a client-side generated UNIX timestamp at the cost of slightly reduced accuracy. If you do this, use a timestamp ~10 minutes in the past to avoid over calculating the rewards and creating an invalid transaction.
 
+## API
+
+### getKomodoRewards(utxo)
+
+Returns a the accrued rewards in satoshis.
+
+#### utxo
+
+Type: `Object`
+
+An object containing the following properties of the UTXO:
+
+##### tiptime
+
+Type: `number`
+
+The current tiptime of the Komodo blockchain.
+
+##### locktime
+
+Type: `number`
+
+The locktime value of the UTXO.
+
+##### height
+
+Type: `number`
+
+The height of the UTXO.
+
+##### satoshis
+
+Type: `number`
+
+The value of the UTXO in satoshis.
+
 ## License
 
 MIT © Atomic Labs<br />
