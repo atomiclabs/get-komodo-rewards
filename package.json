@@ -1,6 +1,6 @@
 {
   "name": "get-komodo-rewards",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calculate the accrued rewards for a given Komodo UTXO",
   "main": "index.js",
   "repository": "https://github.com/atomiclabs/get-komodo-rewards",
