@@ -16,6 +16,24 @@ Originally built for our [Ledger KMD Reward Claim](https://github.com/atomiclabs
 npm install get-komodo-rewards
 ```
 
+## Usage
+
+Pass in a `utxo` object and an integer of the accrued rewards in satoshis will be returned.
+
+```js
+const getKomodoRewards = require('get-komodo-rewards');
+
+const utxo = {
+  tiptime: 1552292091,
+  locktime: 1552248193,
+  height: 1263192,
+  satoshis: 3206795322480
+};
+
+const rewards = getKomodoRewards(utxo);
+// 205000320
+```
+
 ## License
 
 MIT © Atomic Labs<br />
