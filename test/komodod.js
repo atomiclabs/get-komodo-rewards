@@ -7,6 +7,6 @@ function consensusMacro(t, utxo) {
 	t.is(rewards, utxo.komododRewards);
 }
 
-consensusMacro.title = (_, {id}) => `Test getKomodoRewards() against komodod for UTXO ${id}`;
+consensusMacro.title = (_, {id}) => `Test getKomodoRewards() against komodod gettxout for UTXO ${id}`;
 
 utxos.forEach(utxo => test(consensusMacro, utxo));
