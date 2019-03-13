@@ -68,3 +68,14 @@ test('getKomodoRewards() returns 0 if satoshis < MIN_SATOSHIS', t => {
 
 	t.is(0, getKomodoRewards(utxo));
 });
+
+test('getKomodoRewards() returns 0 if coinage < ONE_HOUR', t => {
+	const utxo = {
+		tiptime,
+		locktime: Math.floor(subMinutes(tiptime * ONE_MILLISECOND, ONE_HOUR - 1).getTime() / ONE_MILLISECOND),
+		height,
+		satoshis
+	};
+
+	t.is(0, getKomodoRewards(utxo));
+});
