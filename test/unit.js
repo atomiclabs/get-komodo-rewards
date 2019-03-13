@@ -57,3 +57,14 @@ test('getKomodoRewards() returns 0 if locktime < LOCKTIME_THRESHOLD', t => {
 
 	t.is(0, getKomodoRewards(utxo));
 });
+
+test('getKomodoRewards() returns 0 if satoshis < MIN_SATOSHIS', t => {
+	const utxo = {
+		tiptime,
+		locktime,
+		height,
+		satoshis: MIN_SATOSHIS - 1
+	};
+
+	t.is(0, getKomodoRewards(utxo));
+});
