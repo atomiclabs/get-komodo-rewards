@@ -2,6 +2,13 @@
   "name": "get-komodo-rewards",
   "version": "1.0.1",
   "description": "Calculate the accrued rewards for a given Komodo UTXO",
+  "keywords": [
+    "kmd",
+    "komodo",
+    "rewards",
+    "interest",
+    "cryptocurrency"
+  ],
   "main": "index.js",
   "repository": "https://github.com/atomiclabs/get-komodo-rewards",
   "author": "Luke Childs <lukechilds123@gmail.com>",
