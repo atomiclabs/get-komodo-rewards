@@ -46,3 +46,14 @@ test('getKomodoRewards() returns 0 if height > KOMODO_ENDOFERA', t => {
 
 	t.is(0, getKomodoRewards(utxo));
 });
+
+test('getKomodoRewards() returns 0 if locktime < LOCKTIME_THRESHOLD', t => {
+	const utxo = {
+		tiptime,
+		locktime: LOCKTIME_THRESHOLD - 1,
+		height,
+		satoshis
+	};
+
+	t.is(0, getKomodoRewards(utxo));
+});
