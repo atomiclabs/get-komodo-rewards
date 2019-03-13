@@ -24,3 +24,14 @@ test('getKomodoRewards() correctly calculates rewards', t => {
 
 	t.is(95, getKomodoRewards(utxo));
 });
+
+test('getKomodoRewards() returns 0 if height == KOMODO_ENDOFERA', t => {
+	const utxo = {
+		tiptime,
+		locktime,
+		height: KOMODO_ENDOFERA,
+		satoshis
+	};
+
+	t.is(0, getKomodoRewards(utxo));
+});
