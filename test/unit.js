@@ -79,3 +79,14 @@ test('getKomodoRewards() returns 0 if coinage < ONE_HOUR', t => {
 
 	t.is(0, getKomodoRewards(utxo));
 });
+
+test('getKomodoRewards() returns 0 if height isn\'t set', t => {
+	const utxo = {
+		tiptime,
+		locktime,
+		height: 0,
+		satoshis
+	};
+
+	t.is(0, getKomodoRewards(utxo));
+});
