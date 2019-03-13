@@ -101,3 +101,14 @@ test('getKomodoRewards() caps rewards to one year when height < ONE_MONTH_CAP_HA
 
 	t.is(49926395, getKomodoRewards(utxo));
 });
+
+test('getKomodoRewards() caps rewards to one month when height == ONE_MONTH_CAP_HARDFORK', t => {
+	const utxo = {
+		tiptime,
+		locktime: Math.floor(subYears(tiptime * ONE_MILLISECOND, 1).getTime() / ONE_MILLISECOND),
+		height: ONE_MONTH_CAP_HARDFORK,
+		satoshis
+	};
+
+	t.is(4235195, getKomodoRewards(utxo));
+});
