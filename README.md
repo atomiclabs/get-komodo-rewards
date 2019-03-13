@@ -34,6 +34,12 @@ const rewards = getKomodoRewards(utxo);
 // 205000320
 ```
 
+### Tip
+
+`tiptime` should be the current tiptime from `komodod`.
+
+If you don't have access to this you can use a client-side generated UNIX timestamp at the cost of slightly reduced accuracy. If you do this, use a timestamp ~10 minutes in the past to avoid over calculating the rewards and creating an invalid transaction.
+
 ## License
 
 MIT © Atomic Labs<br />
